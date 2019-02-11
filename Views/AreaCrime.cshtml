@@ -1,0 +1,87 @@
+@page
+@model AreaCrimeModel
+@{
+  ViewData["Title"] = "Top-10 Crimes by Area";
+}
+
+<h2>Top-10 Crimes By Area</h2>  
+
+<br />
+<h3>Area: "@Model.Input"</h3>
+<br />
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+	   <br />
+		 <br />
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>  
+            <th>  
+                Rank
+            </th>  
+            <th>  
+                IUCR
+            </th>  
+            <th>  
+                PrimaryDesc 
+            </th>  
+            <th>  
+                SecondaryDesc 
+            </th>  
+            <th>  
+                NumCrimes
+            </th> 
+            <th>  
+                PercentCrime 
+            </th>  
+            <th>  
+                ArrestPercent
+            </th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+				@{
+				   int rank = 1;
+				 }
+				
+        @foreach (var item in Model.CrimesList)  
+        {  
+            <tr>  
+                <td>  
+										@rank
+                </td>  
+                <td>  
+                    @item.IUCR
+                </td>  
+                <td>  
+                    @item.PrimaryDesc
+                </td>  
+                <td>  
+                    @item.SecondaryDesc
+                </td>  
+                <td>  
+                    @item.NumCrimes
+                </td>  
+                <td>  
+                    @item.PercentCrime
+                </td>  
+                <td>  
+                    @item.ArrestPercent
+                </td>  
+            </tr>  
+						
+						rank++;
+        }  
+    </tbody>  
+</table> 

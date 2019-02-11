@@ -1,0 +1,77 @@
+@page
+@model HomicidesModel
+@{
+  ViewData["Title"] = "Most Homicides by Area in the Summer";
+}
+
+<h2>Most Homicides by Area in the Summer</h2>  
+<h3>June, July and August Months</h3>
+
+@{
+   if (@Model.EX != null)
+	 {
+	   <br />
+		 <br />
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>  
+            <th>  
+                Rank
+            </th>  
+            <th>  
+                Area
+            </th>  
+            <th>  
+                AreaName 
+            </th>  
+            <th>  
+                PrimaryDesc 
+            </th>  
+            <th>  
+                NumHomicide
+            </th> 
+            <th>  
+                PercentCrime 
+            </th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+				@{
+				   int rank = 1;
+				 }
+				
+        @foreach (var item in Model.HomicidesList)  
+        {  
+            <tr>  
+                <td>  
+										@rank
+                </td>  
+                <td>  
+                    @item.Area
+                </td>  
+                <td>  
+                    @item.AreaName
+                </td>  
+                <td>  
+                    @item.PrimaryDesc
+                </td>  
+                <td>  
+                    @item.NumHomicide
+                </td>  
+                <td>  
+                    @item.PercentCrime
+                </td> 
+            </tr>  
+						
+						rank++;
+        }  
+    </tbody>  
+</table> 

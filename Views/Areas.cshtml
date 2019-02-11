@@ -1,0 +1,60 @@
+@page
+@model AreasModel
+@{
+  ViewData["Title"] = "Areas of Chicago";
+}
+
+<h2>Areas of Chicago</h2>  
+
+@{
+   if (@Model.EX != null)
+	 {
+	   <br />
+		 <br />
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>  
+            <th>  
+                Area
+            </th> 
+            <th>  
+                AreaName 
+            </th>  
+            <th>  
+                NumCrimes 
+            </th>  
+            <th>  
+                PercentCrime
+            </th> 
+        </tr>  
+    </thead>  
+    <tbody>  
+				
+        @foreach (var item in Model.AreasList)  
+        {  
+            <tr>   
+                <td>  
+                    @item.Area
+                </td>  
+                <td>  
+                    @item.AreaName
+                </td>  
+                <td>  
+                    @item.NumCrimes
+                </td>  
+                <td>  
+                    @item.PercentCrime
+                </td>  
+            </tr>  
+						
+        }  
+    </tbody>  
+</table> 
